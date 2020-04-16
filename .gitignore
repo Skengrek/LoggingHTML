@@ -130,3 +130,6 @@ dmypy.json
 
 # The log folder
 /log
+
+#File for PyCharm IDE
+./idea
