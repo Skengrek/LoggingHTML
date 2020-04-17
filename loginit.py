@@ -1,13 +1,15 @@
 # coding: utf-8
 
 """
-This file will be used to improve logging
+HTML logger for python
+
+start from the github project : https://gist.github.com/ColinDuquesnoy/8296508
 """
 
 import os
 import time
 import logging
-from html import START, END, MSG
+from ressources.html import START, END, MSG
 
 # * HTML fileHandler
 # * ##########################################################################
@@ -58,11 +60,12 @@ class HTMLFormatter(logging.Formatter):
         msg = msg.replace("<", "&#60")
         msg = msg.replace(">", "&#62")
 
-        mouse_over = f"line : {record.lineno}"
+        mouse_over_module = f"Function : {record.funcName}"
 
         return MSG % {"class": class_name, "time": "%.4f" % t, "msg": msg,
-                      "origin": record.module, "mouseover": mouse_over,
-                      "line": record.lineno}
+                      "origin": record.module, "line": record.lineno,
+                      "moduleMouseOver": mouse_over_module,
+                      }
 
 
 class HTMLLogger(logging.Logger):

@@ -1,6 +1,6 @@
 
 from loginit import get_logger
-import othermodules
+from Tester import othermodules
 
 logger = get_logger()
 

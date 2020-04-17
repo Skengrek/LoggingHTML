@@ -67,7 +67,7 @@ STYLE = """
 # * The script part of the HTML.
 # * ##########################################################################
 
-# ? The first script take care of the tabs selecting wich information the
+# ? tab_switch: take care of the tabs selecting wich information the
 # ? user wants to see
 SCRIPT = """
 // Get the element with id="defaultOpen" and click on it
@@ -105,6 +105,10 @@ function tab_switch(evt, type) {
 }
 """
 
+# * The core frame of the HTML file
+# * ##########################################################################
+
+
 START = f"""
     <html>
         <head>
@@ -126,6 +130,11 @@ START = f"""
             <div class="box">            
             
             <table>
+            <tr>
+                <th scope="row" width="100">Time</td>
+                <td width="150"><pre>File and line</pre></td>
+                <td><pre>message</pre></td>
+            </tr>
     
 """
 
@@ -142,9 +151,8 @@ MSG = """
 
 <tr class="tabcontent %(class)s">
         <th scope="row" width="100">%(time)s</td>
-        <td width="150"><pre>%(origin)s</pre></td>
-        <td width="50">%(line)s</td>
-        <td><pre><span title="%(mouseover)s">%(msg)s</span></pre></td>
+        <td width="150"><pre><span title="%(moduleMouseOver)s">%(origin)s (%(line)s)</span></pre></td>
+        <td><pre>%(msg)s</pre></td>
 </tr>
 
 """
