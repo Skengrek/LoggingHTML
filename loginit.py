@@ -9,7 +9,7 @@ start from the github project : https://gist.github.com/ColinDuquesnoy/8296508
 import os
 import time
 import logging
-from ressources.html import START, END, MSG
+from .ressources.html import START, END, MSG
 
 # * HTML fileHandler
 # * ##########################################################################
@@ -113,10 +113,10 @@ def setup(title, version, level=logging.DEBUG, dir='log'):
 _logger = None
 
 
-def get_logger():
+def get_logger(name, version='1.0'):
     global _logger
     if _logger is None:
-        _logger = setup('Test', '2.0')
+        _logger = setup(name, version)
         _logger.info('Start logging')
     return _logger
 
